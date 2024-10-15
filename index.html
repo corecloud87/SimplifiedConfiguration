@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Configuration Platform</title>
+</head>
+<body>
+    <h1>Government Configuration Platform</h1>
+    <button onclick="getConfig()">Get Config</button>
+    <button onclick="updateConfig()">Update Config</button>
+    <pre id="configData"></pre>
+    <script>
+        function getConfig() {
+            fetch('/get_config')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('configData').textContent = JSON.stringify(data, null, 4);
+                });
+        }
+
+        function updateConfig() {
+            const newConfig = {
+                "database_host": "localhost",
+                "database_port": 5432,
+                "api_key": "new_api_key_here"
+            };
+            
+            fetch('/update_config', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newConfig)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.status);
+                getConfig();
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+##A simple front-end template to interact with our API.
+
+
+
+
+
+
+
+
