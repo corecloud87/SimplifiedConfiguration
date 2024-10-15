@@ -1,0 +1,5 @@
+{
+    "database_host": "localhost",
+    "database_port": 5432,
+    "api_key": "your_api_key_here"
+}
