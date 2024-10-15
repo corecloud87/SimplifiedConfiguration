@@ -1,0 +1,10 @@
+pip install Flask
+
+
+gov_config_platform/
+├── app.py
+├── config/
+│   └── default_config.json
+├── templates/
+│   └── index.html
+└── static/
